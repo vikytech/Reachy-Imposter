@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Who Is the Impostor?</title>
+    <link rel="stylesheet" href="/static/game/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>IMPOSTOR</h1>
+        <p id="phase-label" class="phase-label">connecting…</p>
+      </div>
+      <div id="announce-round" class="round-badge hidden"></div>
+    </header>
+
+    <main id="screen" class="screen">
+      <div id="joining" class="card">
+        <p class="eyebrow">Aboard the RV Paragon</p>
+        <h2>Joining the ship…</h2>
+      </div>
+    </main>
+
+    <div id="toasts" class="toasts" aria-live="polite"></div>
+
+    <script src="/static/game/app.js"></script>
+  </body>
+</html>
