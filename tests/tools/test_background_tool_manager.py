@@ -7,6 +7,7 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
+from reachy_imposter_app.tools.core_tools import ToolDependencies
 from reachy_imposter_app.tools.tool_constants import ToolState
 from reachy_imposter_app.tools.background_tool_manager import (
     ToolProgress,
@@ -15,6 +16,14 @@ from reachy_imposter_app.tools.background_tool_manager import (
     ToolNotification,
     BackgroundToolManager,
 )
+
+
+def test_tool_call_routine_builds_with_game_dependency() -> None:
+    """ToolCallRoutine must resolve `ImposterGame` in ToolDependencies without model_rebuild."""
+    deps = ToolDependencies(reachy_mini=object(), movement_manager=object(), game=None)
+    routine = ToolCallRoutine(tool_name="noop", args_json_str="{}", deps=deps)
+
+    assert routine.deps.game is None
 
 
 # ---------------------------------------------------------------------------

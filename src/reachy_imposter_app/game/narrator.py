@@ -36,8 +36,8 @@ class GameNarrator:
         self._rng = rng or random.Random()
 
     def attach(self) -> None:
-        """Subscribe to every engine event the game produces."""
-        self.game.set_emitter(self._handle)
+        """Subscribe to every engine event the game produces, alongside other listeners."""
+        self.game.add_listener(self._handle)
 
     def _announce(self, texts: str | list[str], pause_s: float = 1.4) -> None:
         if isinstance(texts, str):

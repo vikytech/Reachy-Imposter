@@ -148,7 +148,9 @@ def test_settings_ui_detaches_framework_catch_all_before_own_routes() -> None:
     stream._init_settings_ui_if_needed()
     client = TestClient(app)
 
-    assert client.get("/").status_code == 200
+    root = client.get("/", follow_redirects=False)
+    assert root.status_code == 302
+    assert root.headers["location"] == "/game"
     assert client.get("/static/js/api.js").status_code == 200
     assert _rpc_call(app, "conversation.status")["result"]["backend"]
 
@@ -823,7 +825,13 @@ async def test_change_voice_reports_handler_failure() -> None:
 
 def _audio_robot(**media_attrs: Any) -> SimpleNamespace:
     """Return a robot whose media exposes only the attributes a test drives."""
-    return SimpleNamespace(media=SimpleNamespace(audio=None, backend=None, **media_attrs))
+    defaults = {
+        "audio": None,
+        "backend": None,
+        "get_output_audio_samplerate": MagicMock(return_value=16000),
+    }
+    defaults.update(media_attrs)
+    return SimpleNamespace(media=SimpleNamespace(**defaults))
 
 
 def _stop_after(stream: LocalStream, value: Any) -> Callable[[], Any]:
@@ -932,6 +940,39 @@ async def test_play_loop_skips_empty_audio() -> None:
     handler = MagicMock()
     stream = LocalStream(handler, robot)
     handler.emit = AsyncMock(side_effect=_stop_after(stream, (24000, np.array([], dtype=np.int16))))
+
+    await stream.play_loop()
+
+    robot.media.push_audio_sample.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_record_loop_stops_when_audio_unavailable() -> None:
+    """Without an audio backend, record_loop exits without reading frames."""
+    robot = _audio_robot(
+        get_input_audio_samplerate=MagicMock(return_value=-1),
+        get_audio_sample=MagicMock(),
+    )
+    handler = MagicMock()
+    handler.receive = AsyncMock()
+    stream = LocalStream(handler, robot)
+
+    await stream.record_loop()
+
+    robot.media.get_audio_sample.assert_not_called()
+    handler.receive.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_play_loop_drops_audio_when_unavailable() -> None:
+    """Without an audio backend, assistant audio is dropped, not pushed."""
+    robot = _audio_robot(
+        get_output_audio_samplerate=MagicMock(return_value=-1),
+        push_audio_sample=MagicMock(),
+    )
+    handler = MagicMock()
+    stream = LocalStream(handler, robot)
+    handler.emit = AsyncMock(side_effect=_stop_after(stream, (24000, np.zeros(4, dtype=np.int16))))
 
     await stream.play_loop()
 

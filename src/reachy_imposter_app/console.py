@@ -55,11 +55,11 @@ try:
     # FastAPI is provided by the Reachy Mini Apps runtime
     from fastapi import FastAPI, Response
     from pydantic import BaseModel
-    from fastapi.responses import FileResponse
+    from starlette.responses import RedirectResponse
     from starlette.staticfiles import StaticFiles
 except Exception:  # pragma: no cover - only loaded when settings_app is used
     FastAPI = object  # type: ignore
-    FileResponse = object  # type: ignore
+    RedirectResponse = object  # type: ignore
     StaticFiles = object  # type: ignore
     BaseModel = object  # type: ignore
 
@@ -510,10 +510,11 @@ class LocalStream:
             logger.warning("Failed to persist startup voice: %s", e)
 
     def _init_settings_ui_if_needed(self) -> None:
-        """Attach minimal settings UI to the settings app.
+        """Attach the settings/JSON-RPC surface and game landing to the settings app.
 
-        Always mounts the UI when a settings_app is provided so that users
-        see a confirmation message even if the API key is already configured.
+        Always mounted when a settings_app is provided: `/` lands on the game
+        lobby, `/rpc` drives connection and personality settings, and `/static`
+        serves the game and avatar assets.
         """
         if self._settings_initialized:
             return
@@ -522,7 +523,6 @@ class LocalStream:
         settings_app = self._settings_app
 
         static_dir = Path(__file__).parent / "static"
-        index_file = static_dir / "index.html"
         logger.info("Serving settings UI from %s", static_dir)
 
         # Framework pre-registers GET / and /static; strip them so our routes aren't shadowed.
@@ -557,10 +557,10 @@ class LocalStream:
                 **backend_connection,
             }
 
-        # GET / -> index.html
+        # GET / -> the game lobby, so the app URL served by the daemon opens the game.
         @settings_app.get("/")
-        def _root() -> FileResponse:
-            return FileResponse(str(index_file))
+        def _root() -> RedirectResponse:
+            return RedirectResponse("/game", status_code=302)
 
         # GET /favicon.ico -> optional, avoid noisy 404s on some browsers
         @settings_app.get("/favicon.ico")
@@ -878,6 +878,9 @@ class LocalStream:
     async def record_loop(self) -> None:
         """Read mic frames from the recorder and forward them to the handler."""
         input_sample_rate = self._robot.media.get_input_audio_samplerate()
+        if input_sample_rate < 0:
+            logger.warning("Audio input is unavailable; voice recording is disabled.")
+            return
         logger.debug(f"Audio recording started at {input_sample_rate} Hz")
 
         while not self._stop_event.is_set():
@@ -889,6 +892,7 @@ class LocalStream:
 
     async def play_loop(self) -> None:
         """Fetch outputs from the handler: log text and play audio frames."""
+        audio_available = self._robot.media.get_output_audio_samplerate() >= 0
         while not self._stop_event.is_set():
             handler = self.handler
             try:
@@ -925,8 +929,9 @@ class LocalStream:
                 # Cast if needed
                 audio_frame = audio_to_float32(audio_data)
 
-                self._robot.media.push_audio_sample(audio_frame)
-                self._emit_level("assistant", audio_frame)
+                if audio_available:
+                    self._robot.media.push_audio_sample(audio_frame)
+                    self._emit_level("assistant", audio_frame)
 
             else:
                 logger.debug("Ignoring output type=%s", type(handler_output).__name__)
