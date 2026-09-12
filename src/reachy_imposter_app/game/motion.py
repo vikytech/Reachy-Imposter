@@ -3,14 +3,14 @@
 import logging
 from typing import TYPE_CHECKING
 
-from src.reachy_imposter_app.game.events import GameEvent
-from src.reachy_imposter_app.tools.play_emotion import resolve_emotion_name
-from src.reachy_imposter_app.dance_emotion_moves import GotoQueueMove, EmotionQueueMove
+from reachy_imposter_app.game.events import GameEvent
+from reachy_imposter_app.tools.play_emotion import resolve_emotion_name
+from reachy_imposter_app.dance_emotion_moves import GotoQueueMove, EmotionQueueMove
 
 
 if TYPE_CHECKING:
     from reachy_mini.motion.recorded_move import RecordedMoves
-    from src.reachy_imposter_app.moves import MovementManager
+    from reachy_imposter_app.moves import MovementManager
 
 
 logger = logging.getLogger(__name__)

@@ -7,20 +7,20 @@ from pathlib import Path
 from collections.abc import Callable
 
 from reachy_mini.apps.jsonrpc_server import JsonRpcServer
-from src.reachy_imposter_app.config import LOCKED_PROFILE, config
-from src.reachy_imposter_app.personality import AvailableTool, list_personalities, available_tool_catalog
-from src.reachy_imposter_app.profile_store import (
+from reachy_imposter_app.config import LOCKED_PROFILE, config
+from reachy_imposter_app.personality import AvailableTool, list_personalities, available_tool_catalog
+from reachy_imposter_app.profile_store import (
     DEFAULT_PROFILE_NAME,
     normalize_tool_names,
     canonical_profile_name,
     profile_directory_has_definition,
 )
-from src.reachy_imposter_app.tool_settings import (
+from reachy_imposter_app.tool_settings import (
     RestartCallback,
     apply_tool_change,
     raise_tool_settings_error,
 )
-from src.reachy_imposter_app.profile_toolsets import (
+from reachy_imposter_app.profile_toolsets import (
     read_profile_tool_override,
     clear_profile_tool_override,
     write_profile_tool_override,

@@ -9,7 +9,7 @@ from pathlib import Path
 from dataclasses import dataclass
 from collections.abc import Iterable
 
-from src.reachy_imposter_app.config import DEFAULT_PROFILES_DIRECTORY, config
+from reachy_imposter_app.config import DEFAULT_PROFILES_DIRECTORY, config
 
 
 logger = logging.getLogger(__name__)

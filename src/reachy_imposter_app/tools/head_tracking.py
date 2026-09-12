@@ -1,7 +1,7 @@
 import logging
 from typing import Any, Dict
 
-from src.reachy_imposter_app.tools.core_tools import Tool, ToolDependencies
+from reachy_imposter_app.tools.core_tools import Tool, ToolDependencies
 
 
 logger = logging.getLogger(__name__)

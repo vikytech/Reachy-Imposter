@@ -18,7 +18,7 @@ from reachy_mini import ReachyMini
 from reachy_mini.io.jsonrpc import JsonRpcError
 from reachy_mini.apps.jsonrpc_server import JsonRpcServer
 from reachy_mini.media.media_manager import MediaBackend
-from src.reachy_imposter_app.config import (
+from reachy_imposter_app.config import (
     HF_BACKEND,
     LOCKED_PROFILE,
     HF_REALTIME_WS_URL_ENV,
@@ -37,18 +37,18 @@ from src.reachy_imposter_app.config import (
     get_hf_connection_selection,
     refresh_runtime_config_from_env,
 )
-from src.reachy_imposter_app.prompts import get_session_voice, get_session_instructions
-from src.reachy_imposter_app.streaming import AdditionalOutputs, audio_to_float32
-from src.reachy_imposter_app.startup_settings import read_startup_settings, write_startup_settings
-from src.reachy_imposter_app.tools.core_tools import initialize_tools
-from src.reachy_imposter_app.tool_space_routes import register_tool_space_methods
-from src.reachy_imposter_app.personality_routes import (
+from reachy_imposter_app.prompts import get_session_voice, get_session_instructions
+from reachy_imposter_app.streaming import AdditionalOutputs, audio_to_float32
+from reachy_imposter_app.startup_settings import read_startup_settings, write_startup_settings
+from reachy_imposter_app.tools.core_tools import initialize_tools
+from reachy_imposter_app.tool_space_routes import register_tool_space_methods
+from reachy_imposter_app.personality_routes import (
     build_personality_ops,
     register_personality_methods,
 )
-from src.reachy_imposter_app.profile_tool_routes import register_profile_tool_methods
-from src.reachy_imposter_app.audio.startup_config import apply_audio_startup_config
-from src.reachy_imposter_app.conversation_handler import ConversationHandler
+from reachy_imposter_app.profile_tool_routes import register_profile_tool_methods
+from reachy_imposter_app.audio.startup_config import apply_audio_startup_config
+from reachy_imposter_app.conversation_handler import ConversationHandler
 
 
 try:

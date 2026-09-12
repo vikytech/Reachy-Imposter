@@ -10,9 +10,9 @@ from collections.abc import Callable, Awaitable
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 
-from src.reachy_imposter_app.game.engine import GameError, ImposterGame
-from src.reachy_imposter_app.game.events import GameEvent
-from src.reachy_imposter_app.game.narrator import GameNarrator
+from reachy_imposter_app.game.engine import GameError, ImposterGame
+from reachy_imposter_app.game.events import GameEvent
+from reachy_imposter_app.game.narrator import GameNarrator
 
 
 logger = logging.getLogger(__name__)

@@ -15,7 +15,7 @@ from fastapi import FastAPI, Request, Response
 
 from reachy_mini import ReachyMini, ReachyMiniApp
 from reachy_imposter_app import app_lifecycle
-from src.reachy_imposter_app.utils import (
+from reachy_imposter_app.utils import (
     parse_args,
     setup_logger,
     log_connection_troubleshooting,
@@ -23,7 +23,7 @@ from src.reachy_imposter_app.utils import (
 
 
 if TYPE_CHECKING:
-    from src.reachy_imposter_app.console import LocalStream
+    from reachy_imposter_app.console import LocalStream
 
 
 _import_warmup_thread: threading.Thread | None = None
@@ -50,7 +50,7 @@ def start_import_warmup() -> threading.Thread:
                 import openai.resources.realtime  # noqa: F401
                 import websockets.asyncio.client  # noqa: F401
 
-                import src.reachy_imposter_app.huggingface_realtime  # noqa: F401
+                import reachy_imposter_app.huggingface_realtime  # noqa: F401
             except Exception:
                 logging.getLogger(__name__).debug("Import warmup failed", exc_info=True)
 
@@ -98,7 +98,7 @@ def main() -> None:
     """Entrypoint for the Reachy Mini conversation app."""
     args, _ = parse_args()
     if args.command == "tool-spaces":
-        from src.reachy_imposter_app.tool_spaces import handle_tool_spaces_command
+        from reachy_imposter_app.tool_spaces import handle_tool_spaces_command
 
         logger = setup_logger(args.debug)
         try:
@@ -119,15 +119,15 @@ def run(
     """Run the Reachy Mini conversation app."""
     start_import_warmup()
     # Putting these dependencies here makes the dashboard faster to load when the conversation app is installed
-    from src.reachy_imposter_app.moves import MovementManager
-    from src.reachy_imposter_app.config import (
+    from reachy_imposter_app.moves import MovementManager
+    from reachy_imposter_app.config import (
         HF_LOCAL_CONNECTION_MODE,
         set_instance_path,
         get_hf_connection_selection,
         resolve_app_timeout_minutes,
         refresh_runtime_config_from_env,
     )
-    from src.reachy_imposter_app.startup_settings import (
+    from reachy_imposter_app.startup_settings import (
         StartupSettings,
         load_startup_settings_into_runtime,
     )
@@ -159,9 +159,9 @@ def run(
         get_hf_connection_selection().mode,
     )
 
-    from src.reachy_imposter_app.console import LocalStream
-    from src.reachy_imposter_app.tools.core_tools import ToolDependencies
-    from src.reachy_imposter_app.conversation_handler import ConversationHandler
+    from reachy_imposter_app.console import LocalStream
+    from reachy_imposter_app.tools.core_tools import ToolDependencies
+    from reachy_imposter_app.conversation_handler import ConversationHandler
 
     if robot is None:
         try:
@@ -200,7 +200,7 @@ def run(
 
     def build_handler(startup_voice: Optional[str] = None) -> ConversationHandler:
         """Build a Hugging Face realtime handler for the current runtime config."""
-        from src.reachy_imposter_app.huggingface_realtime import HuggingFaceRealtimeHandler
+        from reachy_imposter_app.huggingface_realtime import HuggingFaceRealtimeHandler
 
         hf_connection_selection = get_hf_connection_selection()
         transport_label = (
@@ -241,10 +241,10 @@ def run(
     )
 
     # Keep the engine's own imports lazy and build it with fresh state.
-    from src.reachy_imposter_app.game.engine import ImposterGame
-    from src.reachy_imposter_app.game.motion import GameMotion
-    from src.reachy_imposter_app.game.server import GameServer, register_game_routes
-    from src.reachy_imposter_app.game.narrator import GameNarrator
+    from reachy_imposter_app.game.engine import ImposterGame
+    from reachy_imposter_app.game.motion import GameMotion
+    from reachy_imposter_app.game.server import GameServer, register_game_routes
+    from reachy_imposter_app.game.narrator import GameNarrator
 
     game = ImposterGame()
     deps.game = game

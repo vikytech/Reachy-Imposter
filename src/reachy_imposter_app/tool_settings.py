@@ -8,7 +8,7 @@ from collections.abc import Callable, Coroutine
 from concurrent.futures import Future
 
 from reachy_mini.io.jsonrpc import JsonRpcError
-from src.reachy_imposter_app.tools.core_tools import initialize_tools
+from reachy_imposter_app.tools.core_tools import initialize_tools
 
 
 logger = logging.getLogger(__name__)

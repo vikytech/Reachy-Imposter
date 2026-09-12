@@ -20,13 +20,13 @@ from typing import Any, Final
 from dataclasses import dataclass
 from collections.abc import Mapping, Callable, Iterable
 
-from src.reachy_imposter_app.tools import core_tools
-from src.reachy_imposter_app.streaming import AdditionalOutputs
-from src.reachy_imposter_app.tools.dance import Dance
-from src.reachy_imposter_app.tools.move_head import MoveHead
-from src.reachy_imposter_app.tools.play_emotion import PlayEmotion
-from src.reachy_imposter_app.tools.idle_do_nothing import IdleDoNothing
-from src.reachy_imposter_app.tools.background_tool_manager import (
+from reachy_imposter_app.tools import core_tools
+from reachy_imposter_app.streaming import AdditionalOutputs
+from reachy_imposter_app.tools.dance import Dance
+from reachy_imposter_app.tools.move_head import MoveHead
+from reachy_imposter_app.tools.play_emotion import PlayEmotion
+from reachy_imposter_app.tools.idle_do_nothing import IdleDoNothing
+from reachy_imposter_app.tools.background_tool_manager import (
     BackgroundTool,
     ToolCallRoutine,
     BackgroundToolManager,

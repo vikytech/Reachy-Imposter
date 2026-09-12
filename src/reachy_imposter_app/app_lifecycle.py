@@ -12,10 +12,10 @@ import numpy.typing as npt
 from reachy_mini import ReachyMini
 from reachy_mini.reachy_mini import SLEEP_HEAD_POSE
 from reachy_mini.utils.interpolation import distance_between_poses
-from src.reachy_imposter_app.config import config, set_custom_profile
-from src.reachy_imposter_app.profile_store import DEFAULT_PROFILE_NAME, migrate_legacy_profiles
-from src.reachy_imposter_app.tools.core_tools import ToolDependencies, initialize_tools
-from src.reachy_imposter_app.tools.go_to_sleep import GoToSleep
+from reachy_imposter_app.config import config, set_custom_profile
+from reachy_imposter_app.profile_store import DEFAULT_PROFILE_NAME, migrate_legacy_profiles
+from reachy_imposter_app.tools.core_tools import ToolDependencies, initialize_tools
+from reachy_imposter_app.tools.go_to_sleep import GoToSleep
 
 
 _STOP_CURRENT_APP_PATH = "/api/apps/stop-current-app"

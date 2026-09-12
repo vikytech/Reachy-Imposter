@@ -9,7 +9,7 @@ from contextlib import contextmanager
 from dataclasses import field, dataclass
 from collections.abc import Iterable, Iterator
 
-from src.reachy_imposter_app.profile_store import (
+from reachy_imposter_app.profile_store import (
     read_profile,
     normalize_tool_names,
     canonical_profile_name,

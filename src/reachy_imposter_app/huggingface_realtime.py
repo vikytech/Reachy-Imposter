@@ -26,8 +26,8 @@ from openai.types.realtime import (
 from websockets.exceptions import ConnectionClosedError
 from openai.types.realtime.realtime_audio_input_turn_detection_param import ServerVad
 
-from src.reachy_imposter_app.tools import core_tools
-from src.reachy_imposter_app.config import (
+from reachy_imposter_app.tools import core_tools
+from reachy_imposter_app.config import (
     HF_LOCAL_CONNECTION_MODE,
     config,
     get_default_voice,
@@ -37,19 +37,19 @@ from src.reachy_imposter_app.config import (
     parse_hf_realtime_url,
     get_hf_connection_selection,
 )
-from src.reachy_imposter_app.prompts import (
+from reachy_imposter_app.prompts import (
     get_session_voice,
     get_session_instructions,
     get_session_greeting_prompt,
 )
-from src.reachy_imposter_app.streaming import AdditionalOutputs, audio_to_int16
-from src.reachy_imposter_app.tools.core_tools import (
+from reachy_imposter_app.streaming import AdditionalOutputs, audio_to_int16
+from reachy_imposter_app.tools.core_tools import (
     ToolSpec,
     ToolDependencies,
     get_tool_specs,
 )
-from src.reachy_imposter_app.conversation_handler import ConversationHandler
-from src.reachy_imposter_app.tools.background_tool_manager import (
+from reachy_imposter_app.conversation_handler import ConversationHandler
+from reachy_imposter_app.tools.background_tool_manager import (
     ToolCallRoutine,
     ToolNotification,
     BackgroundToolManager,

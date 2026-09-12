@@ -3,9 +3,9 @@
 import logging
 from pathlib import Path
 
-from src.reachy_imposter_app.config import config, get_default_voice
-from src.reachy_imposter_app.memory import format_memory_for_prompt
-from src.reachy_imposter_app.profile_store import (
+from reachy_imposter_app.config import config, get_default_voice
+from reachy_imposter_app.memory import format_memory_for_prompt
+from reachy_imposter_app.profile_store import (
     DEFAULT_PROFILE_NAME,
     ProfileDefinition,
     ProfileFormatError,

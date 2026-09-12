@@ -13,12 +13,12 @@ from typing import Any, Dict, Callable, Optional, Coroutine
 
 from pydantic import Field, BaseModel, PrivateAttr
 
-from src.reachy_imposter_app.tools.core_tools import (
+from reachy_imposter_app.tools.core_tools import (
     ToolDependencies,
     dispatch_tool_call,
     dispatch_tool_call_with_manager,
 )
-from src.reachy_imposter_app.tools.tool_constants import ToolState, SystemTool
+from reachy_imposter_app.tools.tool_constants import ToolState, SystemTool
 
 
 logger = logging.getLogger(__name__)

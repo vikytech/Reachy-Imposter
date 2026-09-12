@@ -8,8 +8,8 @@ the built-in map, then the default.
 import logging
 from pathlib import Path
 
-from src.reachy_imposter_app.config import config
-from src.reachy_imposter_app.profile_store import DEFAULT_PROFILE_NAME, canonical_profile_name
+from reachy_imposter_app.config import config
+from reachy_imposter_app.profile_store import DEFAULT_PROFILE_NAME, canonical_profile_name
 
 
 DEFAULT_AVATAR_FILE = "default.svg"

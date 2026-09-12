@@ -3,12 +3,12 @@
 import logging
 from typing import TYPE_CHECKING, Any, Dict
 
-from src.reachy_imposter_app.tools.core_tools import Tool, ToolDependencies
-from src.reachy_imposter_app.tools.tool_constants import ToolState
+from reachy_imposter_app.tools.core_tools import Tool, ToolDependencies
+from reachy_imposter_app.tools.tool_constants import ToolState
 
 
 if TYPE_CHECKING:
-    from src.reachy_imposter_app.tools.background_tool_manager import BackgroundToolManager
+    from reachy_imposter_app.tools.background_tool_manager import BackgroundToolManager
 
 
 logger = logging.getLogger(__name__)

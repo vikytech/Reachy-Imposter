@@ -7,8 +7,8 @@ from pathlib import Path
 from collections.abc import Callable
 
 from reachy_mini.apps.jsonrpc_server import JsonRpcServer
-from src.reachy_imposter_app.config import LOCKED_PROFILE, config
-from src.reachy_imposter_app.tool_spaces import (
+from reachy_imposter_app.config import LOCKED_PROFILE, config
+from reachy_imposter_app.tool_spaces import (
     ToolSpaceNotInstalledError,
     InstalledToolSpacesManifest,
     ToolSpaceAliasConflictError,
@@ -17,13 +17,13 @@ from src.reachy_imposter_app.tool_spaces import (
     install_tool_space,
     read_installed_tool_spaces,
 )
-from src.reachy_imposter_app.profile_store import canonical_profile_name
-from src.reachy_imposter_app.tool_settings import (
+from reachy_imposter_app.profile_store import canonical_profile_name
+from reachy_imposter_app.tool_settings import (
     RestartCallback,
     apply_tool_change,
     raise_tool_settings_error,
 )
-from src.reachy_imposter_app.profile_toolsets import read_profile_tool_names
+from reachy_imposter_app.profile_toolsets import read_profile_tool_names
 
 
 logger = logging.getLogger(__name__)

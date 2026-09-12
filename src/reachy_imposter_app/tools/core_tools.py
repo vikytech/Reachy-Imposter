@@ -13,18 +13,18 @@ from pathlib import Path
 from dataclasses import dataclass
 
 from reachy_mini import ReachyMini
-from src.reachy_imposter_app.config import config, list_tool_module_names
-from src.reachy_imposter_app.mcp_client import McpToolTimeoutError, McpToolInvocationError
-from src.reachy_imposter_app.tool_spaces import build_remote_client, read_installed_tool_spaces
-from src.reachy_imposter_app.profile_store import DEFAULT_PROFILE_NAME
-from src.reachy_imposter_app.profile_toolsets import read_profile_tool_names
-from src.reachy_imposter_app.tools.tool_constants import SystemTool
+from reachy_imposter_app.config import config, list_tool_module_names
+from reachy_imposter_app.mcp_client import McpToolTimeoutError, McpToolInvocationError
+from reachy_imposter_app.tool_spaces import build_remote_client, read_installed_tool_spaces
+from reachy_imposter_app.profile_store import DEFAULT_PROFILE_NAME
+from reachy_imposter_app.profile_toolsets import read_profile_tool_names
+from reachy_imposter_app.tools.tool_constants import SystemTool
 
 
 if TYPE_CHECKING:
-    from src.reachy_imposter_app.mcp_client import RemoteMcpToolClient
-    from src.reachy_imposter_app.game.engine import ImposterGame
-    from src.reachy_imposter_app.tools.background_tool_manager import BackgroundToolManager
+    from reachy_imposter_app.mcp_client import RemoteMcpToolClient
+    from reachy_imposter_app.game.engine import ImposterGame
+    from reachy_imposter_app.tools.background_tool_manager import BackgroundToolManager
 
 
 logger = logging.getLogger(__name__)

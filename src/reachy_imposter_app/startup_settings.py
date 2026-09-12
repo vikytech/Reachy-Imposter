@@ -91,7 +91,7 @@ def write_startup_settings(
 
 def load_startup_settings_into_runtime(instance_path: str | Path | None) -> StartupSettings:
     """Load instance-local startup settings when no explicit profile override is set."""
-    from src.reachy_imposter_app.config import LOCKED_PROFILE, set_custom_profile
+    from reachy_imposter_app.config import LOCKED_PROFILE, set_custom_profile
 
     if LOCKED_PROFILE is not None:
         return StartupSettings()

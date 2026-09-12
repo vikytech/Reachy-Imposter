@@ -9,10 +9,10 @@ from collections.abc import Callable
 import numpy as np
 from numpy.typing import NDArray
 
-from src.reachy_imposter_app.streaming import AdditionalOutputs, AsyncStreamHandler, wait_for_item
-from src.reachy_imposter_app.idle_policy import start_idle_tool_call
-from src.reachy_imposter_app.tools.core_tools import ToolDependencies, get_tool_specs
-from src.reachy_imposter_app.tools.background_tool_manager import BackgroundToolManager
+from reachy_imposter_app.streaming import AdditionalOutputs, AsyncStreamHandler, wait_for_item
+from reachy_imposter_app.idle_policy import start_idle_tool_call
+from reachy_imposter_app.tools.core_tools import ToolDependencies, get_tool_specs
+from reachy_imposter_app.tools.background_tool_manager import BackgroundToolManager
 
 
 logger = logging.getLogger(__name__)

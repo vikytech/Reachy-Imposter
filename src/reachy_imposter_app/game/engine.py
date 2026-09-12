@@ -12,9 +12,9 @@ import logging
 from dataclasses import dataclass
 from collections.abc import Callable
 
-from src.reachy_imposter_app.game.tasks import assign_task
-from src.reachy_imposter_app.game.events import GameEvent
-from src.reachy_imposter_app.game.models import MIN_PLAYERS, Role, Phase, Player, GameConfig, event
+from reachy_imposter_app.game.tasks import assign_task
+from reachy_imposter_app.game.events import GameEvent
+from reachy_imposter_app.game.models import MIN_PLAYERS, Role, Phase, Player, GameConfig, event
 
 
 logger = logging.getLogger(__name__)

@@ -4,7 +4,7 @@ import logging
 from enum import Enum
 from dataclasses import field, fields, replace, dataclass
 
-from src.reachy_imposter_app.game.events import GameEvent
+from reachy_imposter_app.game.events import GameEvent
 
 
 logger = logging.getLogger(__name__)

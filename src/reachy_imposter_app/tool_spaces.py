@@ -17,8 +17,8 @@ from collections.abc import Sequence
 from huggingface_hub import HfApi, SpaceInfo, get_token
 from huggingface_hub.errors import RepositoryNotFoundError
 
-from src.reachy_imposter_app.config import USER_PERSONALITIES_DIRNAME, config
-from src.reachy_imposter_app.mcp_client import (
+from reachy_imposter_app.config import USER_PERSONALITIES_DIRNAME, config
+from reachy_imposter_app.mcp_client import (
     McpClientError,
     RemoteToolSpec,
     RemoteMcpToolClient,
@@ -26,8 +26,8 @@ from src.reachy_imposter_app.mcp_client import (
     apply_name_normalization,
     build_namespaced_tool_name,
 )
-from src.reachy_imposter_app.profile_store import DEFAULT_PROFILE_NAME, list_profile_names
-from src.reachy_imposter_app.profile_toolsets import (
+from reachy_imposter_app.profile_store import DEFAULT_PROFILE_NAME, list_profile_names
+from reachy_imposter_app.profile_toolsets import (
     ProfileToolsets,
     enable_profile_tools,
     read_profile_toolsets,

@@ -6,10 +6,10 @@ import logging
 from typing import Any
 from collections.abc import Callable, Awaitable, Coroutine
 
-from src.reachy_imposter_app.game import scripts
-from src.reachy_imposter_app.game.engine import ImposterGame
-from src.reachy_imposter_app.game.events import GameEvent
-from src.reachy_imposter_app.game.motion import GameMotion
+from reachy_imposter_app.game import scripts
+from reachy_imposter_app.game.engine import ImposterGame
+from reachy_imposter_app.game.events import GameEvent
+from reachy_imposter_app.game.motion import GameMotion
 
 
 logger = logging.getLogger(__name__)

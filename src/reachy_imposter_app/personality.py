@@ -7,14 +7,14 @@ from typing import Literal, TypedDict
 from pathlib import Path
 from collections.abc import Iterable
 
-from src.reachy_imposter_app.config import (
+from reachy_imposter_app.config import (
     USER_PERSONALITIES_DIRNAME,
     config,
     get_default_voice,
     list_tool_module_names,
 )
-from src.reachy_imposter_app.tool_spaces import read_installed_tool_spaces
-from src.reachy_imposter_app.profile_store import (
+from reachy_imposter_app.tool_spaces import read_installed_tool_spaces
+from reachy_imposter_app.profile_store import (
     DEFAULT_PROFILE_NAME,
     ProfileFormatError,
     write_profile,
@@ -22,14 +22,14 @@ from src.reachy_imposter_app.profile_store import (
     read_profile_from_directory,
     read_packaged_default_profile,
 )
-from src.reachy_imposter_app.profile_toolsets import (
+from reachy_imposter_app.profile_toolsets import (
     read_profile_toolsets,
     write_profile_toolsets,
     get_profile_toolsets_path,
     clear_profile_tool_override,
     profile_toolsets_transaction,
 )
-from src.reachy_imposter_app.tools.tool_constants import SystemTool
+from reachy_imposter_app.tools.tool_constants import SystemTool
 
 
 logger = logging.getLogger(__name__)

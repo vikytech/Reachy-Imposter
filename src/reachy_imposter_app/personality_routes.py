@@ -7,30 +7,30 @@ from collections.abc import Callable, Awaitable, Coroutine
 
 from reachy_mini.io.jsonrpc import JsonRpcError
 from reachy_mini.apps.jsonrpc_server import JsonRpcServer
-from src.reachy_imposter_app.config import (
+from reachy_imposter_app.config import (
     LOCKED_PROFILE,
     config,
     get_default_voice,
     get_available_voices,
 )
-from src.reachy_imposter_app.avatars import avatar_id_for, read_avatar_svg
-from src.reachy_imposter_app.personality import (
+from reachy_imposter_app.avatars import avatar_id_for, read_avatar_svg
+from reachy_imposter_app.personality import (
     delete_personality,
     list_personalities,
     save_user_personality,
     available_tool_catalog,
 )
-from src.reachy_imposter_app.profile_store import (
+from reachy_imposter_app.profile_store import (
     DEFAULT_PROFILE_NAME,
     ProfileFormatError,
     read_profile,
     normalize_tool_names,
     canonical_profile_name,
 )
-from src.reachy_imposter_app.profile_toolsets import (
+from reachy_imposter_app.profile_toolsets import (
     read_profile_tool_override,
 )
-from src.reachy_imposter_app.conversation_handler import ConversationHandler
+from reachy_imposter_app.conversation_handler import ConversationHandler
 
 
 logger = logging.getLogger(__name__)

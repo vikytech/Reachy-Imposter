@@ -39,7 +39,7 @@ from reachy_mini import ReachyMini
 from reachy_mini.utils import create_head_pose
 from reachy_mini.motion.move import Move
 from reachy_mini.utils.interpolation import compose_world_offset, linear_pose_interpolation
-from src.reachy_imposter_app.dance_emotion_moves import EmotionQueueMove
+from reachy_imposter_app.dance_emotion_moves import EmotionQueueMove
 
 
 logger = logging.getLogger(__name__)

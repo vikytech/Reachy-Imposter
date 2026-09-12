@@ -2,7 +2,7 @@ import random
 import logging
 from typing import Any, Dict
 
-from src.reachy_imposter_app.tools.core_tools import Tool, ToolDependencies
+from reachy_imposter_app.tools.core_tools import Tool, ToolDependencies
 
 
 logger = logging.getLogger(__name__)
@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 # Initialize dance library
 try:
     from reachy_mini_dances_library.collection.dance import AVAILABLE_MOVES
-    from src.reachy_imposter_app.dance_emotion_moves import DanceQueueMove
+    from reachy_imposter_app.dance_emotion_moves import DanceQueueMove
 
     DANCE_AVAILABLE = True
 except ImportError as e:

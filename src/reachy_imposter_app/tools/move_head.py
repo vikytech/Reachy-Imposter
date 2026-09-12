@@ -2,8 +2,8 @@ import logging
 from typing import Any, Dict, Tuple, Literal
 
 from reachy_mini.utils import create_head_pose
-from src.reachy_imposter_app.tools.core_tools import Tool, ToolDependencies
-from src.reachy_imposter_app.dance_emotion_moves import GotoQueueMove
+from reachy_imposter_app.tools.core_tools import Tool, ToolDependencies
+from reachy_imposter_app.dance_emotion_moves import GotoQueueMove
 
 
 logger = logging.getLogger(__name__)
